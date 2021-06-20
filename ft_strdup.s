@@ -33,10 +33,10 @@ _ft_strdup:
 		jmp		exit			; return
 error:
 		push	rax
-    	call	___error
-    	pop		rcx	
-    	mov		qword [rax], 12	; set errno to ENOMEM
-    	xor		rax, rax
+		call	___error
+		pop		rcx	
+		mov		qword [rax], 12	; set errno to ENOMEM
+		xor		rax, rax
 		jmp		exit
 exit:
 		ret

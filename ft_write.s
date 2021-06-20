@@ -20,10 +20,10 @@ _ft_write:
 		jmp		exit
 error:
 		push	rax
-    	call	___error
-    	pop		rcx	
-    	mov		[rax], rcx
-    	mov		rax, -1
+		call	___error
+		pop		rcx	
+		mov		[rax], rcx
+		mov		rax, -1
 		jmp		exit
 exit:
 		ret

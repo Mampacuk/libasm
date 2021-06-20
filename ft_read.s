@@ -20,10 +20,10 @@ _ft_read:
 		jmp		exit
 error:
 		push	rax				; save the error code on the stack
-    	call	___error		; call __error which puts a pointer to 'errno' into rax
-    	pop		rcx				; move the error code from the stack to rcx
-    	mov		[rax], rcx		; go by the errno pointer and put in it the error code
-    	mov		rax, -1			; put -1 into rax, instead of the errno pointer
+		call	___error		; call __error which puts a pointer to 'errno' into rax
+		pop		rcx				; move the error code from the stack to rcx
+		mov		[rax], rcx		; go by the errno pointer and put in it the error code
+		mov		rax, -1			; put -1 into rax, instead of the errno pointer
 		jmp		exit
 exit:
 		ret
