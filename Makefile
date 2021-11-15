@@ -13,30 +13,34 @@
 SRCS = ${shell find "." -name "*.s"}
 OBJS = $(SRCS:.s=.o)
 
-NAME = libasm.a
-FLAGS = -Wall -Wextra -Werror
-NASM = /Users/aisraely/Downloads/nasm-2.15.05/nasm
-NASM_FLAGS  = -f macho64
+NAME		= test
+LIBASM		= libasm.a
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
+ASM			= nasm
+AFLAGS		= -f macho64
+RM			= rm -rf
+AR			= ar rsc
 
-%.o: 			%.s
-				$(NASM) $(NASM_FLAGS) $< -o $@
+%.o: %.s
+	$(ASM) $(AFLAGS) $< -o $@
 
-all: 			$(NAME)
+all: $(LIBASM)
 
-$(NAME):		$(OBJS)
-				ar rsc $(NAME) $(OBJS)
+$(LIBASM): $(OBJS)
+	$(AR) $(LIBASM) $(OBJS)
 
 clean:			
-				rm -rf $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:			clean
-				rm -rf $(NAME) 
-				rm -rf lib
+fclean: clean
+	$(RM) $(LIBASM) 
+	$(RM) $(NAME)
 
-re:				fclean all
+re:	fclean all
 
-run:			re
-				gcc $(FLAGS) libasm.a main.c -o lib
-				./lib
+run: re
+	$(CC) $(FLAGS) libasm.a main.c -o $(NAME)
+	./$(NAME)
 
-.PHONY: 		clean, fclean, re, run
+.PHONY: clean, fclean, re, run
