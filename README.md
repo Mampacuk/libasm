@@ -1,5 +1,5 @@
 # libasm
-School 42's project "libasm" implementation (no bonus, only mandatory part).
+School 42 project "libasm" implementation (no bonus, only mandatory part).
 ## Notes
 * Passes all the mandatory tests of Tripouille. You can get them [here](https://github.com/Tripouille/libasmTester).
 * The _Makefile_ assumes that your `nasm` binary file is located at the path contained in the `NASM` variable. This won't compile if the path is invalid. If `nasm` is a known command in your shell, you can replace it with just `nasm`. Take care of this before compiling the project.
